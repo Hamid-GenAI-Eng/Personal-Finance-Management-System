@@ -1,0 +1,330 @@
+/* ======== Global Styles ======== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background: #f4f4f4;
+  }
+  
+  /* ======== Dashboard Layout ======== */
+  .dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* ======== Sidebar ======== */
+  .side-bar {
+    width: 60px;
+    background: #ffffff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+  
+  /* Expand Sidebar */
+  .side-bar.expanded {
+    width: 200px;
+    align-items: flex-start;
+  }
+  
+  /* Toggle Button */
+  .toggle-btn {
+    font-size: 20px;
+    padding: 15px;
+    cursor: pointer;
+    color: #333;
+    transition: 0.3s;
+  }
+  
+  .toggle-btn:hover {
+    color: #007bff;
+  }
+  
+  /* ======== Sidebar Menu ======== */
+  .menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  .menu-item:hover {
+    background: #f1f1f1;
+  }
+  
+  /* Icons */
+  .icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  /* Hide text in collapsed mode */
+  .side-bar:not(.expanded) .menu-item span {
+    display: none;
+  }
+  
+  /* Show tooltip on hover */
+  .side-bar:not(.expanded) .menu-item:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 70px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  
+  /* Logout Button */
+  .logout {
+    margin-top: auto;
+    color: red;
+  }
+  
+  .logout:hover {
+    background: rgba(255, 0, 0, 0.1);
+  }
+  
+  /* ======== Main Content ======== */
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease-in-out;
+    margin-left: 60px;
+    width: calc(100% - 60px);
+  }
+  
+  /* Shift content when sidebar expands */
+  .main-content.shifted {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Welcome Text */
+  .welcome-text {
+    font-size: 18px;
+  }
+  
+  /* Search Box */
+  .search-box {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    background: rgba(207, 207, 207, 0.73)
+  }
+  
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Ensures all cards fit */
+    grid-template-rows: auto auto;
+    gap: 20px; /* Slightly reduce gap for better fit */
+    margin: 20px auto; /* Centers content properly */
+    width: 95vw; /* Ensures it fits within screen width */
+    max-width: 1200px; /* Prevents excessive stretching */
+}
+
+
+/* General Card Styling */
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Budget Card */
+.balance-card {
+    background: linear-gradient(135deg, #0066ff, rgb(74, 127, 212));
+    width: 370px;
+    height: 200px;
+}
+
+/* Income & Expense Cards */
+.income-card{
+    background: white;
+    color: black;
+    width: 270px;
+    height: 200px;
+}
+.expenses-card {
+    background: white;
+    color: black;
+    width: 270px;
+    height: 200px;
+    margin-left: -45px;
+}
+
+/* Investment Card */
+.invest-card {
+    background: white;
+    color: black;
+    height: 500px;
+    width: 270px;
+}
+
+/* Savings Card (Placed below Expenses) */
+.savings-card {
+    background: white;
+    color: black;
+    margin-top: -305px;
+    margin-left: -45px;
+
+    width: 270px;
+    height: 283px;
+    grid-column: 3; /* Align under expenses */
+    grid-row: 2; /* Places it in the second row */
+}
+
+.stats-card {
+    background: white;
+    color: black;
+    margin-top: -300px;
+    width: 663px; /* Increase width slightly */
+    height: 300px;
+    grid-column: span 2; /* Expands but doesn't push other cards */
+}
+
+/* Card Footer Inline */
+.card-footer-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Status Badges */
+.status {
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.positive {
+    background: #d4f8d4;
+    color: green;
+}
+
+.negative {
+    background: #f8d4d4;
+    color: red;
+}
+
+
+/* ======== Responsive Design ======== */
+@media screen and (max-width: 1200px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+    }
+
+    .balance-card {
+        width: 100%; /* Make full-width on smaller screens */
+    }
+
+    .income-card,
+    .expenses-card,
+    .invest-card,
+    .savings-card,
+    .stats-card {
+        width: 100%; /* Adjust width for better spacing */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr; /* One card per row */
+    }
+
+    .side-bar {
+        width: 60px;
+        position: absolute;
+        height: 100%;
+    }
+
+    .side-bar.expanded {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 60px;
+        width: calc(100% - 60px);
+    }
+
+    .main-content.shifted {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-box {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cards-container {
+        width: 100%;
+        grid-template-columns: 1fr; /* Stack cards in a single column */
+    }
+
+    .balance-card,
+    .income-card,
+    .expenses-card,
+    .invest-card,
+    .savings-card,
+    .stats-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .toggle-btn {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .menu-item {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
